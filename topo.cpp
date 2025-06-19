@@ -6,6 +6,8 @@ using namespace std;
 // for DAGs:- nodes connected through directed edges and graph doesnt contains a cycle
 // using bfs to implement topo sort
 
+// TC:- O(V+E)
+
 vector<int> topo(int v,vector<int> g[]) {
     int indeg[v] = {0};
     for(int i=0;i<v;i++) {
