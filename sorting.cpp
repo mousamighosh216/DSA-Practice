@@ -1,6 +1,8 @@
 // MERGE SORT //
 
 #include <iostream>
+#include <vector>
+#include <algorithm>
 using namespace std;
 
 
@@ -53,4 +55,37 @@ int main(){
     for(int i=1;i<=n;i++){
         cout << a[i] << " ";
     }
+}
+
+// QUICK SORT
+
+int partition(vector<int> &v, int l, int h) {
+    int pivot = v[h];
+    int low = l-1;
+
+    for(int j=l;j<=h-1;j++) {
+        if(v[j]<pivot) {
+            low++;
+            swap(v[low],v[j]);
+        }
+    }
+
+    swap(v[low+1],v[h]);
+    return low+1;
+}
+
+void quicksort(vector<int> &v,int l,int h) {
+    if(l<h) {
+        int pi = partition(v,l,h);
+        quicksort(v,l,pi-1);
+        quicksort(v,pi+1,h);
+    }
+}
+
+int main() {
+    vector<int> v = {10,9,8,6,1,5};
+    int n = v.size();
+    quicksort(v,0,n-1);
+
+    for(auto i:v) cout << i << " ";
 }
