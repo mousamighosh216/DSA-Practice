@@ -12,6 +12,7 @@ int g[N][N];
 int main() {
     for(int i=0;i<N;i++){
         for(int j=0;j<N;j++){
+            if(i==j) g[i][j]=0;
             g[i][j]=INF;
             // PRE-INITIALIZE
         }
