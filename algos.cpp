@@ -37,3 +37,43 @@ int main() {
 }
 
 
+// multistage graph 
+//tc:= O(n^2)
+
+const int n=9,INF=1e9+10;
+int dist[n][n];
+
+int main() {
+    int cost[n],d[n],p[5];
+    cost[n-1]=0;
+
+    int m;
+    cin >> m;
+    for(int i=0;i<m;i++) {
+        int x,y,wt;
+        cin >> x >> y >> wt;
+        dist[x][y]=wt;
+    }
+
+    for(int i=n-2;i>=0;i--) {
+        int mn=INF;
+        for(int j=i+1;j<n;j++) {
+            if(dist[i][j]!=0 && dist[i][j]+cost[j]<mn) {
+                mn=dist[i][j]+cost[j];
+                d[i]=j;
+            }
+        }
+        cost[i]=mn;
+    }
+
+    p[0]=1;p[4]=n-1;
+    for(int i=1;i<4;i++) {
+        p[i]=d[p[i-1]];
+    }
+
+    for(int i=0;i<5;i++) cout << p[i] << (i==4?"\n":" "); 
+    return 0;
+}
+
+
+
