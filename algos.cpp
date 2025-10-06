@@ -39,6 +39,7 @@ int main() {
 
 // multistage graph 
 //tc:= O(n^2)
+// dp is generally faster than dijkstras, although here we get the same result.
 
 const int n=9,INF=1e9+10;
 int dist[n][n];
